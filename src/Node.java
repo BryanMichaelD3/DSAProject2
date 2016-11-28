@@ -52,14 +52,14 @@ public class Node
 	{
 		List<Node> adjacentNodes = new ArrayList<>();		// List of adjacent nodes to the current vertex node
 		Node newVertex = new Node(getA(), getB(), getC()); 	// Node representing the adjacent vertices of the method's original vertex
-		
+	
 		// Move 'a' to 'b'
 		newVertex.moveAtoB(maxA, maxB, maxC);
 
 		// Add the new vertex to adjacency list if it's not identical to the starting vertex
 		if(!newVertex.equals(this))
 		{
-			adjacentNodes.add(newVertex);
+			adjacentNodes.add(new Node(newVertex.getA(), newVertex.getB(), newVertex.getC()));
 		}
 		
 		// Reset new vertex back to original vertex values for next adjacent case
@@ -73,7 +73,7 @@ public class Node
 		// Add the new vertex to adjacency list if it's not identical to the starting vertex
 		if(!newVertex.equals(this))
 		{
-			adjacentNodes.add(newVertex);
+			adjacentNodes.add(new Node(newVertex.getA(), newVertex.getB(), newVertex.getC()));
 		}
 		
 		// Reset new vertex back to original vertex values for next adjacent case
@@ -87,7 +87,7 @@ public class Node
 		// Add the new vertex to adjacency list if it's not identical to the starting vertex
 		if(!newVertex.equals(this))
 		{
-			adjacentNodes.add(newVertex);
+			adjacentNodes.add(new Node(newVertex.getA(), newVertex.getB(), newVertex.getC()));
 		}
 		
 		// Reset new vertex back to original vertex values for next adjacent case
@@ -101,7 +101,7 @@ public class Node
 		// Add the new vertex to adjacency list if it's not identical to the starting vertex
 		if(!newVertex.equals(this))
 		{
-			adjacentNodes.add(newVertex);
+			adjacentNodes.add(new Node(newVertex.getA(), newVertex.getB(), newVertex.getC()));
 		}
 		
 		// Reset new vertex back to original vertex values for next adjacent case
@@ -115,7 +115,7 @@ public class Node
 		// Add the new vertex to adjacency list if it's not identical to the starting vertex
 		if(!newVertex.equals(this))
 		{
-			adjacentNodes.add(newVertex);
+			adjacentNodes.add(new Node(newVertex.getA(), newVertex.getB(), newVertex.getC()));
 		}
 		
 		// Reset new vertex back to original vertex values for next adjacent case
@@ -129,13 +129,15 @@ public class Node
 		// Add the new vertex to adjacency list if it's not identical to the starting vertex
 		if(!newVertex.equals(this))
 		{
-			adjacentNodes.add(newVertex);
+			adjacentNodes.add(new Node(newVertex.getA(), newVertex.getB(), newVertex.getC()));
 		}
 		
 		// Reset new vertex back to original vertex values for next adjacent case
 		newVertex.setA(getA());
 		newVertex.setB(getB());
 		newVertex.setC(getC());
+		
+		System.out.println("Adjacency list: " + adjacentNodes.toString());
 		
 		return adjacentNodes;
 	}
@@ -230,4 +232,8 @@ public class Node
 			setC(overflow);
 		}		
 	}
+	
+	public String toString()
+	{
+		return "[ " + getA() + ", " + getB() + ", " + getC() + "]";	}
 }

@@ -52,6 +52,15 @@ public class DSAProject2
 			Node currentNode = vertexQueue.removeFirst();
 			List<Node> adjacentNodes = currentNode.getAdjacentNodes(maxA, maxB, maxC);
 			
+
+			// Add current node and its adjacency list to graph
+			graph.add(currentNode);
+			
+			for(Node n: adjacentNodes)
+			{
+				graph.addEdge(currentNode, n);
+			}
+			
 			// If any of the adjacent nodes aren't in the graph yet, add them to the queue
 			for(Node n: adjacentNodes)
 			{
@@ -59,7 +68,7 @@ public class DSAProject2
 				
 				for(Node v: graph)
 				{
-					if (v == n)
+					if (n.equals(v))
 					{
 						inGraph = true;
 					}
@@ -69,15 +78,6 @@ public class DSAProject2
 				{
 					vertexQueue.addLast(n);
 				}
-			}
-			
-			// Add current node and its adjacency list to graph
-			graph.add(currentNode);
-			
-			for(Node n: adjacentNodes)
-			{
-				graph.addEdge(currentNode, n);
-		
 			}
 		}
 		
@@ -108,11 +108,12 @@ public class DSAProject2
 		
 		scan.close();
 		
-		System.out.println("It worked.");
-/*
 		// Create graph of jugs
 		Graph jugs = createGraph(a, b, c);
 
+		System.out.println(jugs.toString());
+		System.out.println("It worked.");
+/*
 		// Determine if (a/2, a/2, 0) is possible, if so then return string with shortest path
 		String result = determinePaths(jugs);
 

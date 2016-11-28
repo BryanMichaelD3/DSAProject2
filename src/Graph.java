@@ -36,4 +36,17 @@ public class Graph<T> implements Iterable<T>
 	{
 		return neighbors.keySet().iterator();
 	}
+	
+	public String toString()
+	{
+		String str = "";
+		
+		for(T v:this)
+		{
+			str += v + " -> ";
+			str += neighbors(v);
+		}
+		
+		return str;
+	}
 }
