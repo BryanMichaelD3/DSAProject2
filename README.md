@@ -4,7 +4,7 @@ This Java program is meant to solve the general jug math problem, in which there
 
 # Classes
 
-DSAProject2 - This is the main class of the program which contains several methods. The class contains main(), a checkInput() method which is meant to check a ≥ b ≥ c > 0, and b ≥ a/2; a createGraph() method that creates a graph with the user's give input; a determinePath() method which helps us determine the shortes path from (a, 0, 0) to (a/2, a/2, 0); and a pathToString() method that reformats the path list and turns it into a displayable string.
+DSAProject2 - This is the main class of the program which contains several methods. The class contains main(), a checkInput() method which is meant to check a ≥ b ≥ c > 0, and b ≥ a/2; a createGraph() method that creates a graph with the user's give input; a determinePath() method which helps us determine the shortest path from (a, 0, 0) to (a/2, a/2, 0); and a pathToString() method that reformats the path list and turns it into a displayable string.
 
 Graph - This class is an implementation of the graph data structure. This class has a hasSolution() method that makes the program check if (a, 0, 0) has a solution of (a/2, a/2, 0). If there is a solution it returns true, else it returns false.
 
