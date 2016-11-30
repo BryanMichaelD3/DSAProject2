@@ -1,3 +1,12 @@
+// Node class
+// Written by: Bryan Dorbert and Angela Raymond
+// This class holds three integer values representing how much is in each of the 
+// three jugs. This class contains a getAdjacentNodes() method that returns a list 
+// of all the adjecent node to the given node; and moveAtoB(), moveAtoC(), 
+// moveBtoA(), moveBtoC(), moveCtoA(), and moveCtoB() methods. These methods are 
+// used to pour from one jug to another; the methods also make sure the pours are 
+// valid pours and there is no overflow when pouring to another jug.
+
 import java.util.ArrayList;
 import java.util.List;
 

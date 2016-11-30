@@ -1,3 +1,12 @@
+// DSAProject2 (Main class)
+// Written by: Bryan Dorbert and Angela Raymond
+// This is the main class of the program which contains several methods. 
+// The class contains main(), a checkInput() method which is meant to check 
+// a >= b >= c > 0, and b >= a/2; a createGraph() method that creates a graph 
+// with the user's give input; a determinePath() method which helps us determine 
+// the shortest path from (a, 0, 0) to (a/2, a/2, 0); and a pathToString() method 
+// that reformats the path list and turns it into a formatted string.
+
 import java.util.Scanner;
 import java.util.Set;
 import java.util.Deque;
