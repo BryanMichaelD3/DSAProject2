@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -37,9 +38,9 @@ public class DSAProject2
 	}
 	
 	// Creates a graph of the user's given jar problem
-	public static Graph<Node> createGraph(int maxA, int maxB, int maxC)
+	public static Graph createGraph(int maxA, int maxB, int maxC)
 	{
-		Graph<Node> graph = new Graph<>();				// Graph of nodes representing jars
+		Graph graph = new Graph();				// Graph of nodes representing jars
 		Deque<Node> vertexQueue = new ArrayDeque<>();	// Queue of nodes that need to be iterated through to check for adjacent nodes
 		
 		// Add starting vertex to queue
@@ -61,14 +62,22 @@ public class DSAProject2
 				graph.addEdge(currentNode, n);
 			}
 			
-			// If any of the adjacent nodes aren't in the graph yet, add them to the queue
+			// If any of the adjacent nodes aren't in the graph or queue yet, add them to the queue
 			for(Node n: adjacentNodes)
 			{
 				boolean inGraph = false;	// Represents whether the current node is in the graph already or not
 				
 				for(Node v: graph)
 				{
-					if (n.equals(v))
+					if(n.equals(v))
+					{
+						inGraph = true;
+					}
+				}
+				
+				for(Node v: vertexQueue)
+				{
+					if(n.equals(v))
 					{
 						inGraph = true;
 					}
@@ -83,6 +92,32 @@ public class DSAProject2
 		
 		// Return the graph
 		return graph;
+	}
+	
+	public static String determinePath(Graph graph)
+	{
+		String str = "";
+		//List<Node> nodes = new ArrayList<>();
+		List<Node> visited = new LinkedList<>();
+		Deque<Node> vertexQueue = new ArrayDeque<>();
+		
+		Node first = null;
+		
+		for(Node n: graph)
+		{
+			first = n;
+			break;
+		}
+		
+		for(Node n: graph.neighbors(first))
+		{
+			
+		}
+		
+		while(!vertexQueue.isEmpty())
+		{
+		}
+		return str;
 	}
 	
 	public static void main(String[] args) 
@@ -111,14 +146,20 @@ public class DSAProject2
 		// Create graph of jugs
 		Graph jugs = createGraph(a, b, c);
 
-		System.out.println(jugs.toString());
-		System.out.println("It worked.");
-/*
 		// Determine if (a/2, a/2, 0) is possible, if so then return string with shortest path
-		String result = determinePaths(jugs);
+		boolean hasPath = false;
+		String result = "";
+		
+		hasPath = jugs.hasSolution(new Node(a/2, a/2, 0));
+		
+		System.out.println(jugs);
+		
+		if(hasPath)
+		{
+			result = determinePath(jugs);
+		}
 
 		// Print out result
 		System.out.println(result);
-*/
 	}
 }

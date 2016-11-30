@@ -4,35 +4,48 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Graph<T> implements Iterable<T>
+public class Graph implements Iterable<Node>
 {
-	protected Map<T, List<T>> neighbors;
+	protected Map<Node, List<Node>> neighbors;
 	
 	public Graph()
 	{
-		neighbors = new LinkedHashMap<T, List<T>>();
+		neighbors = new LinkedHashMap<Node, List<Node>>();
 	}
 	
-	public void add(T v)
+	public void add(Node v)
 	{
 		if(!neighbors.containsKey(v))
 		{
-			neighbors.put(v, new ArrayList<T>());
+			neighbors.put(v, new ArrayList<Node>());
 		}
 	}
 	
-	public void addEdge(T u, T v)
+	public void addEdge(Node u, Node v)
 	{
 		neighbors.get(u).add(v);
 	}
 	
-	public List<T> neighbors(T u)
+	public List<Node> neighbors(Node u)
 	{
-		return new ArrayList<T>(neighbors.get(u));
+		return new ArrayList<Node>(neighbors.get(u));
+	}
+	
+	public boolean hasSolution(Node n)
+	{
+		for(Node v:this)
+		{
+			if(v.hashCode() == n.hashCode())
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	@Override
-	public Iterator<T> iterator()
+	public Iterator<Node> iterator()
 	{
 		return neighbors.keySet().iterator();
 	}
@@ -41,10 +54,11 @@ public class Graph<T> implements Iterable<T>
 	{
 		String str = "";
 		
-		for(T v:this)
+		for(Node v:this)
 		{
 			str += v + " -> ";
 			str += neighbors(v);
+			str += "\n";
 		}
 		
 		return str;

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Node 
 {
@@ -137,8 +138,14 @@ public class Node
 		newVertex.setB(getB());
 		newVertex.setC(getC());
 		
+		/*
 		System.out.println("Adjacency list: " + adjacentNodes.toString());
+		*/
 		
+		/*
+		Scanner scan = new Scanner(System.in);
+		int num = scan.nextInt();
+		*/
 		return adjacentNodes;
 	}
 	
@@ -233,7 +240,40 @@ public class Node
 		}		
 	}
 	
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + a;
+		result = prime * result + b;
+		result = prime * result + c;
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		if(this == obj)
+			return true;
+		if(obj == null)
+			return false;
+		if(getClass() != obj.getClass())
+			return false;
+		
+		Node other = (Node) obj;
+		
+		if(a != other.a)
+			return false;
+		if(b != other.b)
+			return false;
+		if(c != other.c)
+			return false;
+		
+		return true;
+	}
+	
 	public String toString()
 	{
-		return "[ " + getA() + ", " + getB() + ", " + getC() + "]";	}
+		return "[ " + getA() + ", " + getB() + ", " + getC() + "]";	
+	}
 }
