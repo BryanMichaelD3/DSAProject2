@@ -205,6 +205,9 @@ public class DSAProject2
 		// Create graph of jugs
 		Graph<Node> jugs = createGraph(a, b, c);
 		
+		// Print out graph
+		System.out.println(jugs);
+		
 		// Print out vertex and edge count
 		System.out.println("The graph has " + jugs.getEdgeCount() + " edges "
 						 + "and " + jugs.getNodeCount() + " nodes.\n");
