@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class DSAProject2
 {
-	// Checks if the user input a valid jar problem
+	// Checks if the user input a valid jug problem
 	public static boolean checkInput(int a, int b, int c)
 	{
 		// Checks if 'a' is an even value; if not, print an error message
@@ -37,10 +37,10 @@ public class DSAProject2
 		return true;
 	}
 	
-	// Creates a graph of the user's given jar problem
+	// Creates a graph of the user's given problem
 	public static Graph createGraph(int maxA, int maxB, int maxC)
 	{
-		Graph graph = new Graph();				// Graph of nodes representing jars
+		Graph graph = new Graph();				// Graph of nodes representing jugs
 		Deque<Node> vertexQueue = new ArrayDeque<>();	// Queue of nodes that need to be iterated through to check for adjacent nodes
 		
 		// Add starting vertex to queue
@@ -52,7 +52,6 @@ public class DSAProject2
 			// Take a node out of the queue and get a list of its adjacent nodes
 			Node currentNode = vertexQueue.removeFirst();
 			List<Node> adjacentNodes = currentNode.getAdjacentNodes(maxA, maxB, maxC);
-			
 
 			// Add current node and its adjacency list to graph
 			graph.add(currentNode);
@@ -94,13 +93,12 @@ public class DSAProject2
 		return graph;
 	}
 	
+	// Determines the shortest path to the solution of the problem
 	public static String determinePath(Graph graph)
 	{
 		String str = "";
-		//List<Node> nodes = new ArrayList<>();
 		List<Node> visited = new LinkedList<>();
 		Deque<Node> vertexQueue = new ArrayDeque<>();
-		
 		Node first = null;
 		
 		for(Node n: graph)
@@ -116,7 +114,9 @@ public class DSAProject2
 		
 		while(!vertexQueue.isEmpty())
 		{
+			
 		}
+		
 		return str;
 	}
 	
@@ -150,16 +150,17 @@ public class DSAProject2
 		boolean hasPath = false;
 		String result = "";
 		
+		// Check if problem has solution
 		hasPath = jugs.hasSolution(new Node(a/2, a/2, 0));
-		
 		System.out.println(jugs);
 		
+		// If there is a solution, the shortest path is determined
 		if(hasPath)
 		{
 			result = determinePath(jugs);
 		}
 
-		// Print out result
+		// Print out the shortest path as well as the path's length
 		System.out.println(result);
 	}
 }

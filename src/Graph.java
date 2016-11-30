@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+// This is an implementation of the graph data structure
 public class Graph implements Iterable<Node>
 {
 	protected Map<Node, List<Node>> neighbors;
@@ -30,6 +31,7 @@ public class Graph implements Iterable<Node>
 	{
 		return new ArrayList<Node>(neighbors.get(u));
 	}
+	
 	
 	public boolean hasSolution(Node n)
 	{

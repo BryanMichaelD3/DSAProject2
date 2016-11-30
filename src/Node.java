@@ -2,11 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Node 
+// Nodes hold three integer values representing how much is in each of three jars
+public class Node
 {
-	private int a;	// Jar a
-	private int b;  // Jar b
-	private int c;  // Jar c
+	private int a;	// Jug a
+	private int b;  // Jug b
+	private int c;  // Jug c
 	
 	// Constructor
 	public Node(int a, int b, int c)
@@ -138,18 +139,10 @@ public class Node
 		newVertex.setB(getB());
 		newVertex.setC(getC());
 		
-		/*
-		System.out.println("Adjacency list: " + adjacentNodes.toString());
-		*/
-		
-		/*
-		Scanner scan = new Scanner(System.in);
-		int num = scan.nextInt();
-		*/
 		return adjacentNodes;
 	}
 	
-	// These methods are used to move values from one jar to another
+	// These methods are used to move values from one jug to another
 	public void moveAtoB(int maxA, int maxB, int maxC)
 	{
 		// Move 'a' to 'b'
@@ -240,6 +233,7 @@ public class Node
 		}		
 	}
 	
+	@Override
 	public int hashCode()
 	{
 		final int prime = 31;
