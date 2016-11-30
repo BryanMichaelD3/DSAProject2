@@ -1,5 +1,7 @@
 // Node class
 // Written by: Bryan Dorbert and Angela Raymond
+// November 29, 2016
+
 // This class holds three integer values representing how much is in each of the 
 // three jugs. This class contains a getAdjacentNodes() method that returns a list 
 // of all the adjecent node to the given node; and moveAtoB(), moveAtoC(), 

@@ -1,5 +1,7 @@
 // DSAProject2 (Main class)
 // Written by: Bryan Dorbert and Angela Raymond
+// November 29, 2016
+
 // This is the main class of the program which contains several methods. 
 // The class contains main(), a checkInput() method which is meant to check 
 // a >= b >= c > 0, and b >= a/2; a createGraph() method that creates a graph 

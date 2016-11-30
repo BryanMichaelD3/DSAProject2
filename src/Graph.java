@@ -1,6 +1,8 @@
 // Graph class
 // Based on code from Frederick Portier's lecture notes
 // Written by: Bryan Dorbert and Angela Raymond
+// November 29, 2016
+
 // This class is an implementation of the graph data structure. This class has a 
 // hasSolution() method that makes the program check if (a, 0, 0) has a solution of 
 // (a/2, a/2, 0). If there is a solution it returns true, else it returns false.
