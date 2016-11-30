@@ -1,9 +1,13 @@
 import java.util.Scanner;
+import java.util.Set;
 import java.util.Deque;
-import java.util.LinkedList;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class DSAProject2
 {
@@ -38,9 +42,9 @@ public class DSAProject2
 	}
 	
 	// Creates a graph of the user's given problem
-	public static Graph createGraph(int maxA, int maxB, int maxC)
+	public static Graph<Node> createGraph(int maxA, int maxB, int maxC)
 	{
-		Graph graph = new Graph();				// Graph of nodes representing jugs
+		Graph<Node> graph = new Graph<Node>();			// Graph of nodes representing jugs
 		Deque<Node> vertexQueue = new ArrayDeque<>();	// Queue of nodes that need to be iterated through to check for adjacent nodes
 		
 		// Add starting vertex to queue
@@ -94,30 +98,74 @@ public class DSAProject2
 	}
 	
 	// Determines the shortest path to the solution of the problem
-	public static String determinePath(Graph graph)
+	public static <T> List<Node> determinePath(Graph<Node> graph, Node start, Node end)
 	{
-		String str = "";
-		List<Node> visited = new LinkedList<>();
-		Deque<Node> vertexQueue = new ArrayDeque<>();
-		Node first = null;
+		Set<Node> visited = new LinkedHashSet<Node>();
+		Deque<Node> vertexQueue = new ArrayDeque<Node>();
+		Map<Node, Node> parent = new LinkedHashMap<Node, Node>();
 		
-		for(Node n: graph)
-		{
-			first = n;
-			break;
-		}
+		// Add the starting node/vertex to the list of visited, the queue, and add it to the map of parent/child relationships
+		visited.add(start);
+		vertexQueue.add(start);
+		parent.put(start, null);
 		
-		for(Node n: graph.neighbors(first))
-		{
-			
-		}
-		
+		// While queue is not empty...
 		while(!vertexQueue.isEmpty())
 		{
+			// Take a node out of the queue
+			Node n = vertexQueue.remove();
 			
+			// For each neighbor of the current node...
+			for(Node v: graph.neighbors(n))
+			{
+				// If the current node's current neighbor was not visited...
+				if(!visited.contains(v))
+				{
+					// Add it to the list of visited, the queue, and put it in the map of parent/child relationships
+					visited.add(v);
+					vertexQueue.add(v);
+					parent.put(v, n);
+				}
+				
+				// If the current node's current neighbor is the search goal...
+				if(v.equals(end))
+				{
+					List<Node> path = new ArrayList<Node>();
+					
+					// Create a list representing the path to the node
+					while(v != null)
+					{
+						path.add(v);
+						v = parent.get(v);
+					}
+					
+					// Reverse the path list since it's actually backwards and return it
+					Collections.reverse(path);
+					return path;
+				}
+			}
 		}
 		
-		return str;
+		return new ArrayList<Node>();
+	}
+	
+	// Reformats the path list into a nice-looking string
+	public static String pathToString(List<Node> path)
+	{
+		String result = "";
+		int count = 0;
+		
+		result = "The shortest path to the solution is: \n";
+		
+		for(Node p: path)
+		{
+			count++;
+			result += "" + count + ". " + p + "\n";
+		}
+		
+		result += "\nPath length: " + count;
+		
+		return result;
 	}
 	
 	public static void main(String[] args) 
@@ -144,23 +192,31 @@ public class DSAProject2
 		scan.close();
 		
 		// Create graph of jugs
-		Graph jugs = createGraph(a, b, c);
+		Graph<Node> jugs = createGraph(a, b, c);
 
 		// Determine if (a/2, a/2, 0) is possible, if so then return string with shortest path
 		boolean hasPath = false;
-		String result = "";
+		List<Node> result = null;
 		
 		// Check if problem has solution
 		hasPath = jugs.hasSolution(new Node(a/2, a/2, 0));
-		System.out.println(jugs);
 		
-		// If there is a solution, the shortest path is determined
+		// If there is a solution, the shortest path is determined; else print that there is no solution
 		if(hasPath)
 		{
-			result = determinePath(jugs);
+			// Determine path
+			result = determinePath(jugs, new Node(a, 0, 0), new Node(a/2, a/2, 0));
+			
+			// Convert list to a nice-looking string
+			String strResult = pathToString(result);
+			
+			// Print out the results
+			System.out.println(strResult);
 		}
 
-		// Print out the shortest path as well as the path's length
-		System.out.println(result);
+		else
+		{
+			System.out.println("The jug problem you entered does not have a solution.");
+		}
 	}
 }

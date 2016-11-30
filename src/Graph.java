@@ -5,37 +5,37 @@ import java.util.List;
 import java.util.Map;
 
 // This is an implementation of the graph data structure
-public class Graph implements Iterable<Node>
+public class Graph<T> implements Iterable<T>
 {
-	protected Map<Node, List<Node>> neighbors;
+	protected Map<T, List<T>> neighbors;
 	
 	public Graph()
 	{
-		neighbors = new LinkedHashMap<Node, List<Node>>();
+		neighbors = new LinkedHashMap<T, List<T>>();
 	}
 	
-	public void add(Node v)
+	public void add(T v)
 	{
 		if(!neighbors.containsKey(v))
 		{
-			neighbors.put(v, new ArrayList<Node>());
+			neighbors.put(v, new ArrayList<T>());
 		}
 	}
 	
-	public void addEdge(Node u, Node v)
+	public void addEdge(T u, T v)
 	{
 		neighbors.get(u).add(v);
 	}
 	
-	public List<Node> neighbors(Node u)
+	public List<T> neighbors(T u)
 	{
-		return new ArrayList<Node>(neighbors.get(u));
+		return new ArrayList<T>(neighbors.get(u));
 	}
 	
-	
-	public boolean hasSolution(Node n)
+	// Checks if there is a solution to the given jug problem
+	public boolean hasSolution(T n)
 	{
-		for(Node v:this)
+		for(T v:this)
 		{
 			if(v.hashCode() == n.hashCode())
 			{
@@ -47,7 +47,7 @@ public class Graph implements Iterable<Node>
 	}
 	
 	@Override
-	public Iterator<Node> iterator()
+	public Iterator<T> iterator()
 	{
 		return neighbors.keySet().iterator();
 	}
@@ -56,7 +56,7 @@ public class Graph implements Iterable<Node>
 	{
 		String str = "";
 		
-		for(Node v:this)
+		for(T v:this)
 		{
 			str += v + " -> ";
 			str += neighbors(v);

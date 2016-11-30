@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 // Nodes hold three integer values representing how much is in each of three jars
 public class Node
