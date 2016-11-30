@@ -193,6 +193,10 @@ public class DSAProject2
 		
 		// Create graph of jugs
 		Graph<Node> jugs = createGraph(a, b, c);
+		
+		// Print out vertex and edge count
+		System.out.println("The graph has " + jugs.getEdgeCount() + " edges "
+						 + "and " + jugs.getNodeCount() + " nodes.\n");
 
 		// Determine if (a/2, a/2, 0) is possible, if so then return string with shortest path
 		boolean hasPath = false;

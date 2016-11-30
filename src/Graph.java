@@ -46,6 +46,24 @@ public class Graph<T> implements Iterable<T>
 		return false;
 	}
 	
+	// Get node count of graph
+	public int getNodeCount()
+	{
+		return neighbors.keySet().size();
+	}
+	
+	// Get edge count of graph
+	public int getEdgeCount()
+	{
+		int count = 0;
+		for(Map.Entry<T, List<T>> entry: neighbors.entrySet())
+		{
+			count += entry.getValue().size();
+		}
+		
+		return count;
+	}
+	
 	@Override
 	public Iterator<T> iterator()
 	{
